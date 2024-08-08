@@ -1,0 +1,12 @@
+﻿@model TipoCuenta
+@{
+    ViewBag.Title = "Borrar tipo cuenta";
+}
+
+<h3 class="mb-3">Esta seguro que dece eliminar la cuenta @Model.Nombre ?</h3>
+
+<form asp-action="BorrarTipoCuenta">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Borrar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

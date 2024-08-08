@@ -1,0 +1,40 @@
+﻿@model IEnumerable<TipoCuenta>
+
+@{
+    ViewData["Title"] = "Listado de Tipos de Cuentas";
+}
+
+<h1>Tipo de cuentas</h1>
+<h5>El tipo de cuenta se refiere a como podemos agrupar...</h5>
+
+<a asp-action="Crear" class="btn btn-primary mb-3">Crear Nuevo</a>
+
+<table class="table table-striped ">
+    <thead>
+      <tr>
+        <th>Acciones</th>
+        <th>Nombre</th>
+      </tr>
+    </thead>
+    <tbody id="reordenable">
+        @foreach (var tipoCuenta in Model)
+        {
+            <tr>
+                <td>
+                    <a class="btn btn-primary" asp-action="Editar" asp-route-id="@tipoCuenta.Id" >Editar</a> 
+                    <a class="btn btn-danger" asp-action="Borrar" asp-route-id="@tipoCuenta.Id">Eliminar</a>
+                </td>
+                <td>@tipoCuenta.Nombre</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts{
+    <script> 
+        $(function(){
+            $("#reordenable").sortable();
+        })
+    </script>
+   
+}
